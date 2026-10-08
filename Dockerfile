@@ -5,6 +5,7 @@ FROM node:22-slim AS build
 WORKDIR /app
 RUN corepack enable
 COPY pnpm-lock.yaml package.json ./
+COPY patches ./patches
 RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm build
@@ -15,6 +16,7 @@ WORKDIR /app
 ENV NODE_ENV=production
 RUN corepack enable
 COPY pnpm-lock.yaml package.json ./
+COPY patches ./patches
 RUN pnpm install --frozen-lockfile --prod
 COPY --from=build /app/dist ./dist
 
