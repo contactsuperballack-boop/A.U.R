@@ -23,7 +23,7 @@
     },
     "category": {
       "type": "enumeration",
-      "enum": ["Real Estate", "Investment", "Land", "Construction", "Market Insights", "Company News", "Project Updates", "60 Seconds with the CEO"],
+      "enum": ["Real Estate", "Investment", "Land", "Construction", "Market Insights", "Company News", "Project Updates", "Sixty Seconds with the CEO"],
       "required": true
     },
     "excerpt": {
