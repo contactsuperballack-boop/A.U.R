@@ -4,7 +4,7 @@
 FROM node:20-slim AS build
 WORKDIR /opt/app
 RUN apt-get update && apt-get install -y --no-install-recommends python3 make g++ && rm -rf /var/lib/apt/lists/*
-RUN corepack enable
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install --no-frozen-lockfile --config.allow-builds="@swc/core,core-js-pure,esbuild"
 COPY . .
@@ -13,8 +13,8 @@ RUN pnpm build
 
 # --- Runtime stage ---
 FROM node:20-slim AS runtime
-WORKDIR /opt/app
-RUN corepack enable
+WORKDIR /opt/app	
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 ENV NODE_ENV=production
 COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install --no-frozen-lockfile --prod --config.allow-builds="@swc/core,core-js-pure,esbuild"
