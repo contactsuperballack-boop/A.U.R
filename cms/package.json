@@ -38,12 +38,5 @@
   "strapi": {
     "uuid": "ajiya-cms"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "core-js-pure",
-      "esbuild"
-    ]
-  },
-  "license": "MIT"
+  "  "license": "MIT"
 }
