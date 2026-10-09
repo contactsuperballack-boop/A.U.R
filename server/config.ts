@@ -83,7 +83,6 @@ function validateProductionRequirements(config: AppConfig): void {
   if (config.nodeEnv !== "production") return;
 
   const missing: string[] = [];
-  if (!config.databaseUrl) missing.push("DATABASE_URL");
   if (!config.cmsUrl) missing.push("VITE_CMS_URL");
   if (!config.allowedOrigins.length) missing.push("ALLOWED_ORIGINS");
   if (!config.trustProxy) missing.push("TRUST_PROXY");
