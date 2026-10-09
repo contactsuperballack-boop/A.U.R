@@ -21,6 +21,7 @@ RUN pnpm install --no-frozen-lockfile --prod --config.allow-builds="@swc/core,co
 COPY --from=build /opt/app/dist ./dist
 COPY --from=build /opt/app/public ./public
 COPY --from=build /opt/app/dist/src ./src
+COPY --from=build /opt/app/dist/build ./build
 RUN rm -rf ./config
 COPY --from=build /opt/app/dist/config ./config
 
