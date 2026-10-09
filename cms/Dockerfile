@@ -21,7 +21,8 @@ RUN pnpm install --no-frozen-lockfile --prod --config.allow-builds="@swc/core,co
 COPY --from=build /opt/app/dist ./dist
 COPY --from=build /opt/app/public ./public
 COPY --from=build /opt/app/src ./src
-COPY --from=build /opt/app/config ./config
+RUN rm -rf ./config
+COPY --from=build /opt/app/dist/config ./config
 
 # Uploaded media on local disk does not survive a redeploy on most platforms — see
 # SETUP.md Step 5. This volume makes that explicit rather than silently losing files;
