@@ -5,9 +5,7 @@ const { Pool } = pg;
 
 const config = loadConfig();
 
-if (!config.databaseUrl) {
-  throw new Error("DATABASE_URL is required.");
-}
+
 
 export const db = new Pool({
   connectionString: config.databaseUrl,
