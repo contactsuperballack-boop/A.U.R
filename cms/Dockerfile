@@ -20,7 +20,7 @@ COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install --no-frozen-lockfile --prod --config.allow-builds="@swc/core,core-js-pure,esbuild"
 COPY --from=build /opt/app/dist ./dist
 COPY --from=build /opt/app/public ./public
-COPY --from=build /opt/app/src ./src
+COPY --from=build /opt/app/dist/src ./src
 RUN rm -rf ./config
 COPY --from=build /opt/app/dist/config ./config
 
